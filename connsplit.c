@@ -52,7 +52,6 @@ int main(int argc,char **argv)
       	exit(0);
       }
 
-
       else
       {
       	snprintf(buf,sizeof(buf),"echo $(expr `tshark -r %s.pcap -T fields -e tcp.stream | sort -n | uniq | wc -l` - 2 >temp.txt)",val1);
@@ -68,30 +67,23 @@ int main(int argc,char **argv)
       			snprintf(buf,sizeof(buf),"tshark -r %s.pcap -Y \"ip.src==%s and ip.dst==%s\" -w %s/%d.pcap -2 -R \"tcp.stream==%d\"",val1,val4,val4,val2,i,i);
 				system(buf);
         	}
-
       	}
       	else
       	{
-
-      	
 			for(int i = 0; i <=n; i++)
        		{
            	 	snprintf(buf,sizeof(buf),"tshark -r %s.pcap -w %s/%d.pcap -2 -R \"tcp.stream==%d\"",val1,val2,i,i);
            	 	system(buf);
         	}
-
         }
       }
 
       if(val3!=NULL)
       {		
-
       		snprintf(buf,sizeof(buf),"tshark -r %s.pcap -w %s/%s.pcap -Y \"not tcp\"",val1,val3,"nontcp");
            	system(buf);
 
       }
-
-
 	
 	return(0);
 }
