@@ -1,2 +1,1 @@
-# ConSplit
-TCP Traffic Splitter
+# TCP Traffic Splitter
